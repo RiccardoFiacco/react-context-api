@@ -9,12 +9,13 @@ import { Show } from './component/Main/crud_page/Show.jsx'
 import { Create } from './component/Main/crud_page/create.jsx'
 import axios from "axios"
 import { useState } from 'react'
+import { GlobalContext } from './component/GlobalContext.jsx'
 
 function App() {
 
   const [posts, setPosts] = useState([]);  
   const uri = "http://localhost:3000/posts/";
-  
+
   function axiosPostsCall() {
     axios
       .get(uri)
@@ -27,20 +28,22 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route Component={DefaultPage}>
-          <Route path='/' Component={Home}></Route>
-          <Route path='/chi_siamo' Component={ChiSiamo}></Route>
-          <Route path='/posts'>
-            <Route index Component={Posts}></Route>
-            <Route path='/posts/:id' Component={Show}></Route>
-            <Route path='/posts/create' Component={Create}></Route>
+    <GlobalContext.Provider value = {{posts, axiosPostsCall}}>
+      <BrowserRouter>
+        <Routes>
+          <Route Component={DefaultPage}>
+            <Route path='/' Component={Home}></Route>
+            <Route path='/chi_siamo' Component={ChiSiamo}></Route>
+            <Route path='/posts'>
+              <Route index Component={Posts}></Route>
+              <Route path='/posts/:id' Component={Show}></Route>
+              <Route path='/posts/create' Component={Create}></Route>
+            </Route>
+            <Route path='*' Component={notFound}></Route>
           </Route>
-          <Route path='*' Component={notFound}></Route>
-        </Route>
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
+    </GlobalContext.Provider>
   )
 }
 
