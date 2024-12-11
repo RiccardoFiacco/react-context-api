@@ -13,8 +13,11 @@ export function Show(){
     const navigator = useNavigate();
 
     useEffect(() => {
-        axiosPostsCall(uri,setPost); //perche con la arrow function non funziona?  
-    }, [id]);//facciamo la chiamata al cambiamento dell'id (perche con post si rompe?)
+        // axiosPostsCall(uri,setPost); //perche con la arrow function non funziona?  
+        axiosPostsCall(uri,(post) => {
+            setPost(post)
+        });
+    }, [uri]);//facciamo la chiamata al cambiamento dell'id (perche con post si rompe in quanto all'interno c'è set post che cambia il valore creando un loop)
     console.log(post)
     return(
         post &&

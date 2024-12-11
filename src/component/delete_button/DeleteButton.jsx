@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export function DeleteButton({id="", callback = ()=>{}}){
-    console.log(id)
+
     const uri = `http://localhost:3000/posts/${id}`;
     function deletePost() {
         const flag = confirm("sei sicuro?")
