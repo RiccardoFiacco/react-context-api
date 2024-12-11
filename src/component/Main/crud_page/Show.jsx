@@ -8,8 +8,6 @@ export function Show(){
     let {id} = useParams();
     const uri = `http://localhost:3000/posts/${id}`;  
     const [post, setPost] = useState({})
-    let next = parseInt(id)+1;
-    let previous = parseInt(id)-1;
     const navigator = useNavigate();
 
     useEffect(() => {
