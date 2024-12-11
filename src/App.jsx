@@ -11,7 +11,7 @@ import axios from "axios"
 import { useState } from 'react'
 import { GlobalContext } from './component/GlobalContext.jsx'
 
-function App() {
+export function App() {
 
   const [posts, setPosts] = useState([]);  
   const uri = "http://localhost:3000/posts/";
@@ -28,7 +28,7 @@ function App() {
   }
 
   return (
-    <GlobalContext.Provider value = {{posts, axiosPostsCall}}>
+    <GlobalContext.Provider value = {{posts, setPosts, axiosPostsCall}}>
       <BrowserRouter>
         <Routes>
           <Route Component={DefaultPage}>
@@ -47,4 +47,4 @@ function App() {
   )
 }
 
-export default App
+

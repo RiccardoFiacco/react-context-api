@@ -1,43 +1,17 @@
-import axios from "axios";
 import style from "./Posts.module.css";
 import { PostCard } from "../../../card/PostCard";
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 import { Link, Outlet } from "react-router-dom";
+import { useContext } from "react";
+import { GlobalContext } from "../../../GlobalContext";
 
 export function Posts() {
 
-  const [posts, setPosts] = useState([]);  
-  const uri = "http://localhost:3000/posts/";
-
-  /*function deletePost(id) {
-    const flag = confirm("sei sicuro?")
-    //function per eliminare un post
-    if(flag){
-    axios
-      .delete(uri+id)
-      .then((res) => {
-        console.log(res)
-        setPosts(posts.filter((post) => post.id !== id)); //prendo tutto tranne il post che corrisponde al post che ho passato alla funzione
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-    }else{
-      alert("operazione annullata")
-    }
-  } */
-
-  function axiosPostsCall() {
-    axios
-      .get(uri)
-      .then((res) => {
-        setPosts(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }
-
+  const {posts, axiosPostsCall, setPosts} = useContext(GlobalContext)
+  console.log(posts) 
+  console.log(axiosPostsCall)
+  console.log(setPosts)
+  
   useEffect(() => {
     axiosPostsCall();
   }, []);
