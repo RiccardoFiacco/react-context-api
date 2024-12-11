@@ -23,11 +23,13 @@ export function Show(){
         post &&
         <div className="container">
             <div className="row text-center pt-5">
-                <div className="col">
-                     <Link to={`/posts/${previous}`}>precedente</Link> {/*come fermare */}
+                <div className="col">{
+                    post.previous && <Link to={`/posts/${post.previous}`}>precedente</Link> 
+                    }
                 </div>
-                <div className="col">
-                    <Link to={`/posts/${next}`}>successivo</Link>
+                <div className="col">{
+                    post.successive && <Link to={`/posts/${post.successive}`}>successivo</Link>
+                    }
                 </div>
                 <h1>{post.title}</h1>
                 <div className="col pt-5">
