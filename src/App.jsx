@@ -7,8 +7,24 @@ import { Posts } from './component/Main/crud_page/index/Posts.jsx'
 import { notFound } from './component/Main/not found/notFound.jsx'
 import { Show } from './component/Main/crud_page/Show.jsx'
 import { Create } from './component/Main/crud_page/create.jsx'
+import axios from "axios"
+import { useState } from 'react'
+
 function App() {
 
+  const [posts, setPosts] = useState([]);  
+  const uri = "http://localhost:3000/posts/";
+  
+  function axiosPostsCall() {
+    axios
+      .get(uri)
+      .then((res) => {
+        setPosts(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
 
   return (
     <BrowserRouter>
