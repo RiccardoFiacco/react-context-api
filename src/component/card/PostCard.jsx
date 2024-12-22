@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { DeleteButton } from "../delete_button/DeleteButton";
 export function PostCard(props) {
-  const {id="",slug = "" , title = "", image = "", content = "", tags = [], callback} = props;
+  const {id="" , title = "", image = "", content = "", tags = [], callback} = props;
 
   return (
     <div className="col-6 pb-5">
-      <div className="card" id={`${slug}`}>
+      <div className="card" id={`${id}`}>
         <img src={image && id<=5 ? "http://localhost:3000/imgs/posts/"+image : image} className="card-img-top" alt="..." />
         <div className="card-body">
           <h5 className="card-title">{title}</h5>

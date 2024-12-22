@@ -13,7 +13,7 @@ export function Show(){
     useEffect(() => {
         // axiosPostsCall(uri,setPost); //perche con la arrow function non funziona?  
         axiosPostsCall(uri,(post) => {
-            setPost(post)
+            setPost(post[0])
         });
     }, [uri]);//facciamo la chiamata al cambiamento dell'id (perche con post si rompe in quanto all'interno c'è set post che cambia il valore creando un loop)
     console.log(post)

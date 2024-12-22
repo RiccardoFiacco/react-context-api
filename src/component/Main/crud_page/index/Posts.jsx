@@ -36,16 +36,16 @@ export function Posts() {
           {
           posts.length !== 0 ? (
             posts.map((el) => {
+              console.log(el)
               return (
                 <PostCard
                   key={el.id}
                   id={el.id}
-                  slug = {el.slug}
                   title={el.title}
                   image={el.image}
                   content={el.content}
-                  tags={el.tags}
-                  callback={() => setPosts(posts.filter((post) => post.id !== el.id))}  // passo una funziona che aggiorna le pizze che sono disponibili
+                  tags={el.label}
+                  callback={() => setPosts(posts.filter((post) => post.id !== el.id))}  // passo una funziona che aggiorna i post  che sono disponibili
                 />
               );
             })
